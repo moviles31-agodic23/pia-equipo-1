@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { FeedComponent } from './feed/feed.component';
 
 const routes: Routes = [
   {
@@ -12,6 +14,9 @@ const routes: Routes = [
     path: 'registro',
     component: RegistroComponent,
   },
+  { path: 'perfil', component: PerfilComponent },
+  { path: 'detallePublicacion/:id', component: PerfilComponent },
+  { path: 'feed', component: FeedComponent },
   {
     path: '',
     redirectTo: 'login',
