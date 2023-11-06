@@ -1,7 +1,7 @@
-# Clon de Instagram
-Utiliza Ionic para poder conectarse a una base de datos que por medio de enrutamiento nos permite agregar fotos para publlicar
-
-******************************* LA MAESTRA TOMA MUCHO EN CUENTA SI USAMOS COMPONENTES DE IONIC Y NO TANTOS DIV *******************************
+Pa agregar tu codigo a tu pc tienes que ejecutar esto en la consola si ya esta logeada tu cuenta:
+	git init
+	git clone https://github.com/moviles31-agodic23/pia-equipo-1.git
+	npm install
 
 Creen su propias branch y modifican los modulos vacios que cree en el proyecto
 
@@ -17,6 +17,8 @@ Al final de cuentas tenemos 4 componentes principales que tendremos que tener qu
 					  pero por mientras deja imagenes vacias para cuando me toque aser el servicio de imagenes
 	* Detalle publicacion	-> Etian (Igual es casi lo mismo y no confundirnos si lo hace otro)
 
+	No hay necesidad de pasar nada entre urls pq vamos a injectar AngularFireAuth
+
 Yo (Alejandro) uno en el perfil de usuario todos los componentes ya que solo es enrutamiento
 
 Para ver como van sin afectar al otro cambian el enrutamiento al componente que estan haciendo temporalmente para que lo muestre en home
@@ -26,18 +28,22 @@ Si ya ven q jala el q estan moviendo ya podemos entregarlo como avance
 Colecciones en la base serian asi:
 
 	Perfil:
+		* id: string, generado por firestore por defecto
 		* uid: string, identificador que te regresa el login
 		* descripcion: string
 	
 	Publicacion:  // este es como cache pq para obtener una url se necesita hacer un request cada vez que es muy lento
-		* uid: string
-		* url_img: string, recuerden que se usa cloud storage y no es directamente firebase el que almacena todo
+		* id: string, generado por la base
+		* uid: string, el del usuario que hizo la publicacion
 
 	El correo y la contraseña estan fuera del alcanze del usuario y cuando vean el tuto de bloquear las rutas veran todo
 
 	En cloud storage las imagenes tendran este formato:
-		{uid}/imagen_x.jpg
-	Donde uid es la carpeta del usuario actual que sera el uid de su login
+		{uid}/{id}.jpg
+	Donde uid es la carpeta del usuario actual que sera el uid de su login y id es el del campo generado por firebase en la 
+	coleccion de publicacion
+
+	Como los detalles ya estan verificados por usuario lo unico que se debe pasar es {id} por url
 
 Servicios:
 	
@@ -90,4 +96,6 @@ pa abrirlo desde el cel
 	https://www.youtube.com/watch?v=eaOB-KS-Qjk
 
 Pero al final de cuentas solo usamos ionic serve  como siempre y si queremos ver como va en android usamos eso de cap add android 
-y lo pasamos a android studio pa no generar la misma aplicacion muchas veces
+y lo pasamos a android studio pa no generar un chingo de veces la misma aplicacion
+
+**********************************************************************************************************************************************
