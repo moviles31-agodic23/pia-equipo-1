@@ -1,0 +1,7 @@
+{
+  "name": "instafake",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
