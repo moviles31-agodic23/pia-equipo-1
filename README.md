@@ -1,10 +1,5 @@
 # Clon de Instagram
 Utiliza Ionic para poder conectarse a una base de datos que por medio de enrutamiento nos permite agregar fotos para publlicar
-**********************************************************************************************************************************************
-
-Forma correcta de aportar codigo con pull requests
-	https://www.youtube.com/watch?v=FYnTHYV63gs
-* Lo pongo de recordatorio pq nunca habia trabajado en equipo :,v
 
 ******************************* LA MAESTRA TOMA MUCHO EN CUENTA SI USAMOS COMPONENTES DE IONIC Y NO TANTOS DIV *******************************
 
