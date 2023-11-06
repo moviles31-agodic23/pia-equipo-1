@@ -8,11 +8,6 @@ Forma correcta de aportar codigo con pull requests
 
 ******************************* LA MAESTRA TOMA MUCHO EN CUENTA SI USAMOS COMPONENTES DE IONIC Y NO TANTOS DIV *******************************
 
-Pa agregar tu codigo a tu pc tienes que ejecutar esto en la consola si ya esta logeada tu cuenta:
-	git init
-	git clone https://github.com/moviles31-agodic23/pia-equipo-1.git
-	npm install
-
 Creen su propias branch y modifican los modulos vacios que cree en el proyecto
 
 Al final de cuentas tenemos 4 componentes principales que tendremos que tener que rifarnos con enrutamiento los cuales son:
