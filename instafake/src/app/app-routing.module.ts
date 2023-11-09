@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { FeedComponent } from './feed/feed.component';
+import { DetallePublicacionComponent } from './detalle-publicacion/detalle-publicacion.component'
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
     component: RegistroComponent,
   },
   { path: 'perfil', component: PerfilComponent },
-  { path: 'detallePublicacion/:id', component: PerfilComponent },
+  { path: 'detallePublicacion/:id', component: DetallePublicacionComponent },
   { path: 'feed', component: FeedComponent },
   {
     path: '',
