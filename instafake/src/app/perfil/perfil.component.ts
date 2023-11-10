@@ -11,7 +11,16 @@ import { VisorComponent } from './visor/visor.component';
   imports: [IonicModule, DescripcionComponent, VisorComponent],
 })
 export class PerfilComponent implements OnInit {
-  constructor() {}
+  cantidadPublicaciones: string = '';
+  constructor() {
+    this.cantidadPublicaciones = this.mensajePublicaciones();
+  }
 
   ngOnInit() {}
+  obtenerCantidadPublicaciones(): number {
+    return 0;
+  }
+  mensajePublicaciones(): string {
+    return '+XX';
+  }
 }
