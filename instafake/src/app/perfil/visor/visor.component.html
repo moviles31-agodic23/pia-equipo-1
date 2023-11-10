@@ -1,0 +1,18 @@
+<ion-grid [fixed]="true" class="tabla">
+  <!-- Clase: tabla__fila-X con indice en 0-->
+  <ion-row
+    *ngFor="let fila of listaImagenes; index as numeroFila"
+    [class]="'tabla__' + 'fila-' + numeroFila"
+  >
+    <ion-col *ngFor="let imagen of fila; index as numeroImagen" size="4">
+      <ion-thumbnail class="publicacion">
+        <!-- Clase: tabla__imagen-fila,imagen con indice 0 -->
+        <ion-img
+          class="publicacion-imagen"
+          [src]="imagen"
+          [class]="'tabla__' + 'imagen-' + numeroFila + ',' + numeroImagen"
+        />
+      </ion-thumbnail>
+    </ion-col>
+  </ion-row>
+</ion-grid>
