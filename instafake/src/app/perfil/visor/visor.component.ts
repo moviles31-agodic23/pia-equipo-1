@@ -14,6 +14,7 @@ export class VisorComponent implements OnInit {
   listaImagenes: string[][] = new Array();
   servicioImagenes: ImagenesService = inject(ImagenesService);
   cantidadPublicaciones: number = 0;
+  imagenesPorFila: number = 3;
   @Output() emisorCantidadPublicaciones: EventEmitter<number> =
     new EventEmitter<number>();
   constructor() {}
@@ -43,7 +44,7 @@ export class VisorComponent implements OnInit {
     const cantidadFilas: number = this.listaImagenes.length;
     const cantidadImagenesUltimaFila: number =
       this.listaImagenes[cantidadFilas - 1].length;
-    if (cantidadImagenesUltimaFila === 3) {
+    if (cantidadImagenesUltimaFila === this.imagenesPorFila) {
       const nuevaFila: string[] = [url];
       this.listaImagenes.push(nuevaFila);
     } else {
