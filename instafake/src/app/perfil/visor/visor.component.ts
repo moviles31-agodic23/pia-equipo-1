@@ -15,13 +15,11 @@ export class VisorComponent implements OnInit {
   @Output() cantidadPublicaciones: number = 0;
   constructor() {
     this.servicioImagenes
-      .obtenerSuscripcion()
+      .obtenerImagenesPrueba()
       .subscribe((conjuntoImagenes: string[]) => {
         this.listaImagenes.push(conjuntoImagenes);
         this.cantidadPublicaciones += conjuntoImagenes.length;
       });
   }
-  ngOnInit(): void {
-    this.servicioImagenes.obtenerImagenesPrueba();
-  }
+  ngOnInit(): void {}
 }

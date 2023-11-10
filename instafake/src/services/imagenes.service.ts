@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,17 +11,20 @@ export class ImagenesService {
   obtenerSuscripcion(): Subject<string[]> {
     return this.imagenes;
   }
-  obtenerImagenesPrueba(): void {
-    const cantidadImagenes: number = 4;
-    const folder: string = '../../../assets/visor/imagenes_prueba';
-    var valoresFila: string[] = [];
-    for (let i = 0; i < cantidadImagenes; i++) {
-      valoresFila.push(`${folder}/${i + 1}.jpg`);
-      if (i % this.imagenesPorFila === 0 && i != 0) {
-        this.imagenes.next(valoresFila);
-        valoresFila = [];
+  obtenerImagenesPrueba(): Observable<string[]> {
+    return new Observable<string[]>((suscriptor) => {
+      const cantidadImagenes: number = 4;
+      const folder: string = '../../../assets/visor/imagenes_prueba';
+      var valoresFila: string[] = [];
+      for (let i = 0; i < cantidadImagenes; i++) {
+        valoresFila.push(`${folder}/${i + 1}.jpg`);
+        if (i % this.imagenesPorFila === 0 && i != 0) {
+          suscriptor.next(valoresFila);
+          valoresFila = [];
+        }
       }
-    }
+      suscriptor.unsubscribe();
+    });
   }
   cantidadImagenes(imagenes: string[][]): number {
     const cantidadFilas = imagenes.length;
