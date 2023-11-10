@@ -1,3 +1,18 @@
-<p>
-  detalle-publicacion works!
-</p>
+<ion-grid>
+  <ion-row>
+    <ion-col size="12">
+<!--      <div\>-->
+<!--        <img [src]="pictureLink" alt="egg" [ngStyle]="{'height.px': square.offsetWidth}" style="object-fit: cover;">-->
+<!--      </div>-->
+      <img
+        #square
+        src="https://assets.digitalocean.com/articles/alligator/css/object-fit/example-object-fit.jpg"
+        width="600"
+        height="337"
+        style="width: 100%; object-fit: cover;"
+        [ngStyle]="{'height.px': square.width}"
+        alt="Sample image of a tutle riding on top of an alligator that is swimming in the water - scaled to 300 x 337."
+      />
+    </ion-col>
+  </ion-row>
+</ion-grid>
