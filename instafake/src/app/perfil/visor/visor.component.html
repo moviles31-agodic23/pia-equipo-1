@@ -1,3 +1,7 @@
-<p>
-  visor works!
-</p>
+<ion-grid [fixed]="true">
+  <ion-row *ngFor="let fila of listaImagenes">
+    <ion-col *ngFor="let img of fila" size="4"
+      ><ion-img [src]="img"></ion-img
+    ></ion-col>
+  </ion-row>
+</ion-grid>
