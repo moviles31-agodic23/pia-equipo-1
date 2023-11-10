@@ -1,0 +1,7 @@
+.publicacion {
+  height: 100px;
+  width: 100px;
+  &-imagen {
+    object-fit: cover;
+  }
+}

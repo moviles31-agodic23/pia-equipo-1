@@ -1,7 +1,9 @@
 <ion-grid [fixed]="true">
   <ion-row *ngFor="let fila of listaImagenes">
-    <ion-col *ngFor="let img of fila" size="4"
-      ><ion-img [src]="img"></ion-img
-    ></ion-col>
+    <ion-col *ngFor="let imagen of fila" size="4">
+      <ion-thumbnail class="publicacion">
+        <ion-img class="publicacion-imagen" [src]="imagen" />
+      </ion-thumbnail>
+    </ion-col>
   </ion-row>
 </ion-grid>
