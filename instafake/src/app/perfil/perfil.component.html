@@ -8,7 +8,7 @@
       >
     </ion-col>
     <ion-col>
-      <ion-item color="danger">
+      <ion-item color="danger" *ngIf="this.publicacionesDisponibles">
         <ion-label class="perfil-username__publicaciones">{{
           this.cantidadPublicaciones
         }}</ion-label></ion-item
@@ -38,6 +38,8 @@
     <perfil-descripcion></perfil-descripcion>
   </ion-row>
   <ion-row class="perfil-visor">
-    <perfil-visor></perfil-visor>
+    <perfil-visor
+      (emisorCantidadPublicaciones)="mostrarCantidadPublicaciones($event)"
+    ></perfil-visor>
   </ion-row>
 </ion-grid>

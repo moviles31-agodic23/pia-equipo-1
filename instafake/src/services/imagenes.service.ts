@@ -23,6 +23,7 @@ export class ImagenesService {
           valoresFila = [];
         }
       }
+      suscriptor.complete();
       suscriptor.unsubscribe();
     });
   }
