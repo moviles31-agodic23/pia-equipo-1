@@ -46,13 +46,15 @@ Colecciones en la base serian asi:
 	Como los detalles ya estan verificados por usuario lo unico que se debe pasar es {id} por url
 
 Servicios:
-	
-	* El de bloquear las rutas del tutorial
-	* Un servicio de imagenes con los siguientes metodos:
-		- Agregar imagen(event) // el uid se puede obtener injectando el auth lo cual no necesitaria exponer por parametros
-		- obtener lista imagenes () // no se necesitan parametros por el auth inyectado
-	* Para cambiar descripcion donde el unico metodo seria cambiarDescripcion() sin parametros
-		
+
+ 	* Procedimiento para que todos tengan acceso a la base de datos por igual desde angular (Alejandro)
+	* El de bloquear las rutas del tutorial (emiliano)
+	* Un servicio de imagenes con los siguientes metodos: (Nayely)
+		- Agregar imagen(event) // el uid del usuario logeado se puede obtener injectando el auth lo cual
+  					// no necesitaria exponer por parametros
+		- obtener lista imagenes () // no se necesitan parametros por el auth inyectado 
+  					    // un arreglo de las url de las imagenes del usuario actual
+	* Para cambiar descripcion donde el unico metodo seria cambiarDescripcion() sin parametros por le angular auth (Nayely)
 
 **********************************************************************************************************************************************
 
@@ -87,6 +89,12 @@ Imagenes de angular a la base:
 
 Para andar todos en la misma pagina del auth (ya tiene un ejemplo con bloquear rutas)
 	https://www.youtube.com/watch?v=8VTxuIvMTlc
+ 
+Que es rxjs
+	https://www.youtube.com/watch?v=2LCo926NFLI&t=79s&pp=ygUEcnhqcw%3D%3D
+
+Hot vs cold
+	https://www.arquitecturajava.com/hot-vs-cold-observable-con-rxjs/
 
 Seguir tuto desde el minuto 9:50 pa instalar android studio y compilar a java
 	https://youtu.be/JuYZ2xdHw3o?t=602
