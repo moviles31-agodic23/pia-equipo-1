@@ -18,11 +18,12 @@ export class ImagenesService {
       var valoresFila: string[] = [];
       for (let i = 0; i < cantidadImagenes; i++) {
         valoresFila.push(`${folder}/${i + 1}.jpg`);
-        if (i % this.imagenesPorFila === 0 && i != 0) {
+        if ((i + 1) % this.imagenesPorFila === 0) {
           suscriptor.next(valoresFila);
           valoresFila = [];
         }
       }
+      suscriptor.next(valoresFila);
       suscriptor.complete();
       suscriptor.unsubscribe();
     });
