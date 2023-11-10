@@ -1,18 +1,8 @@
 .perfil {
-  &-username {
-    height: 10vh;
-  }
   &-info {
-    height: 10vh;
     &__imagen {
       height: auto;
       width: 50px;
     }
-  }
-  &-descripcion {
-    height: 20vh;
-  }
-  &-visor {
-    height: 40vh;
   }
 }
