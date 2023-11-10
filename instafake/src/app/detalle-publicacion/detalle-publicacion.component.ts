@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import {NgStyle} from "@angular/common";
 
 
 @Component({
@@ -8,7 +7,7 @@ import {NgStyle} from "@angular/common";
   templateUrl: './detalle-publicacion.component.html',
   styleUrls: ['./detalle-publicacion.component.scss'],
   standalone: true,
-  imports: [IonicModule, NgStyle],
+  imports: [IonicModule],
 })
 export class DetallePublicacionComponent implements OnInit {
   constructor() {}
