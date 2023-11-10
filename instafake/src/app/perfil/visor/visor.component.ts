@@ -23,11 +23,31 @@ export class VisorComponent implements OnInit {
       .pipe(
         finalize(() => {
           this.emisorCantidadPublicaciones.emit(this.cantidadPublicaciones);
+          this.agregarImagen(
+            '../../../assets/visor/imagenes_prueba/IMG_20200605_075456-1.jpg'
+          );
+          this.agregarImagen(
+            '../../../assets/visor/imagenes_prueba/IMG_20200613_073256.jpg'
+          );
+          this.agregarImagen(
+            '../../../assets/visor/imagenes_prueba/20220513_123432.jpg'
+          );
         })
       )
       .subscribe((conjuntoImagenes: string[]) => {
         this.listaImagenes.push(conjuntoImagenes);
         this.cantidadPublicaciones += conjuntoImagenes.length;
       });
+  }
+  agregarImagen(url: string): void {
+    const cantidadFilas: number = this.listaImagenes.length;
+    const cantidadImagenesUltimaFila: number =
+      this.listaImagenes[cantidadFilas - 1].length;
+    if (cantidadImagenesUltimaFila === 3) {
+      const nuevaFila: string[] = [url];
+      this.listaImagenes.push(nuevaFila);
+    } else {
+      this.listaImagenes[cantidadFilas - 1].push(url);
+    }
   }
 }
