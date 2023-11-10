@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-
+import { ImagenesService } from 'src/services/imagenes.service';
 @Component({
   selector: 'perfil-visor',
   templateUrl: './visor.component.html',
@@ -10,21 +10,18 @@ import { IonicModule } from '@ionic/angular';
   standalone: true,
 })
 export class VisorComponent implements OnInit {
-  listaImagenes: string[][] = [];
+  listaImagenes: string[][] = new Array();
+  servicioImagenes: ImagenesService = inject(ImagenesService);
+  @Output() cantidadPublicaciones: number = 0;
   constructor() {
-    this.listaImagenes = this.obtenerImagenesPrueba();
+    this.servicioImagenes
+      .obtenerSuscripcion()
+      .subscribe((conjuntoImagenes: string[]) => {
+        this.listaImagenes.push(conjuntoImagenes);
+        this.cantidadPublicaciones += conjuntoImagenes.length;
+      });
   }
-
-  ngOnInit() {}
-  obtenerImagenesPrueba(): string[][] {
-    var folder: string = '../../../assets/visor/imagenes_prueba';
-    var primeraFila: string[] = [
-      `${folder}/1.jpg`,
-      `${folder}/2.jpg`,
-      `${folder}/3.jpg`,
-    ];
-    var segundaFila: string[] = [`${folder}/4.jpg`];
-    var imagenes = [primeraFila, segundaFila];
-    return imagenes;
+  ngOnInit(): void {
+    this.servicioImagenes.obtenerImagenesPrueba();
   }
 }
