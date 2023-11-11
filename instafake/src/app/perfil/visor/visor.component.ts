@@ -23,6 +23,7 @@ export class VisorComponent implements OnInit {
       .obtenerImagenesPrueba()
       .pipe(
         finalize(() => {
+          this.cantidadPublicaciones += 3;
           this.emisorCantidadPublicaciones.emit(this.cantidadPublicaciones);
           this.agregarImagen(
             '../../../assets/visor/imagenes_prueba/IMG_20200605_075456-1.jpg'
