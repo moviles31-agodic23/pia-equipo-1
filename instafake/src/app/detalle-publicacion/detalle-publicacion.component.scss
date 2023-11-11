@@ -1,4 +1,24 @@
-.img-square {
+.img-square::part(image) {
   aspect-ratio: 1 / 1;
   object-fit: cover;
+}
+
+.img-circle::part(image) {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.vertical-center {
+  align-items: center;
+  display: flex;
+}
+
+ion-button[shape=circle] {
+  --border-radius: 50%;
+  aspect-ratio: 1/1;
+}
+
+.zero-padding {
+  padding: 0 0 0 0;
 }
