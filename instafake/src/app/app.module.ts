@@ -16,6 +16,8 @@ import { getDatabase, provideDatabase } from '@angular/fire/database';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() =>
       initializeApp({
         projectId: 'instafake-b7775',
@@ -30,8 +32,7 @@ import { getDatabase, provideDatabase } from '@angular/fire/database';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideDatabase(() => getDatabase()),
-    FormsModule,
-    ReactiveFormsModule
+   
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

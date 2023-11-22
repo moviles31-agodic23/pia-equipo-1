@@ -4,24 +4,30 @@ import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { UserService } from 'src/services/user.service';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonicModule, FormsModule, ReactiveFormsModule, CommonModule],
 })
 export class LoginComponent implements OnInit {
-  credentials!: FormGroup;
+  credentials: FormGroup;
 
   constructor(
-    private userService: UserService,
     private fb: FormBuilder,
+    private userService: UserService,
     private loadingController: LoadingController,
     private alertController: AlertController,
     private router: Router
-  ) {}
+  ) {
+    this.credentials = new FormGroup({
+      email: new FormControl(),
+      password: new FormControl()
+    })
+  }
 
   get email(){
     return this.credentials.get('email');
