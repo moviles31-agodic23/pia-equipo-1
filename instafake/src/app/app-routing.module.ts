@@ -5,7 +5,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { FeedComponent } from './feed/feed.component';
 import { DetallePublicacionComponent } from './detalle-publicacion/detalle-publicacion.component'
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
   {
     path: 'login',
@@ -28,6 +28,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [RouterModule],
 })

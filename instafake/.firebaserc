@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "instafake-b7775"
+  },
+  "targets": {
+    "instafake-b7775": {
+      "hosting": {
+        "app": [
+          "instafake-b7775"
+        ]
+      }
+    }
   }
 }
