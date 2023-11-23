@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { DescripcionComponent } from './descripcion/descripcion.component';
 import { VisorComponent } from './visor/visor.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, } from '@angular/common';
 
 @Component({
   selector: 'app-perfil',

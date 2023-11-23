@@ -74,4 +74,8 @@ export class LoginComponent implements OnInit {
       buttons: ['OK']
     })
   }
+
+  async logout(){
+      this.userService.logout()
+  }
 }
