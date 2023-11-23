@@ -75,4 +75,8 @@ export class LoginComponent implements OnInit {
     });
     await alert.present();
   }
+
+  async logout(){
+      this.userService.logout()
+  }
 }
