@@ -1,23 +1,36 @@
 <ion-header>
+<<<<<<< HEAD
   <ion-toolbar color="primary">
       <ion-title>Ingrese sus datos</ion-title>
   </ion-toolbar>
 </ion-header>
   
+=======
+  <ion-toolbar color="danger">
+      <ion-title>Ingrese sus datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+>>>>>>> main
   <ion-content>
     <form [formGroup]="credentials" (ngSubmit)="login()">
       <ion-item lines="full">
         <ion-label position="floating">Usuario</ion-label>
         <ion-input class="ion-padding" type="email" placeholder="example@email.com" formControlName="email" required></ion-input>
+<<<<<<< HEAD
         
     </ion-item>
   
+=======
+    </ion-item>
+>>>>>>> main
       <ion-item  lines="full">
         <ion-label position="floating">Contraseña</ion-label>
         <ion-input type="password" placeholder="Contraseña" formControlName="password" required></ion-input>
            </ion-item>
       <ion-row>
         <ion-col>
+<<<<<<< HEAD
           <ion-button type="submit" color="primary" expand="block">Iniciar Sesion</ion-button>
           
         </ion-col>
@@ -38,3 +51,19 @@
         </ion-row>
     </form>
   </ion-content>
+=======
+          <ion-button type="submit" color="danger" expand="block">Iniciar Sesion</ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button  type="button" (click)="register()" color="danger" expand="block">Registrarse</ion-button>
+          </ion-col>
+      </ion-row>
+            <ion-button  type="button" (click)="register()" color="primary" expand="block">Registrarse</ion-button>
+      <ion-row>
+        <ion-col>
+          <ion-button  type="button" (click)="logout()" color="danger" expand="block">Logout</ion-button>
+        </ion-col>
+        </ion-row>
+    </form>
+  </ion-content>
+>>>>>>> main

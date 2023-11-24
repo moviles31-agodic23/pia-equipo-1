@@ -67,12 +67,20 @@ export class LoginComponent implements OnInit {
     }
   }
 
+<<<<<<< HEAD
   async showAlert(header: any, message: any){
+=======
+  async showAlert(header: string, message: string){
+>>>>>>> main
     const alert = await this.alertController.create({
       header,
       message,
       buttons: ['OK']
+<<<<<<< HEAD
     });
+=======
+    })
+>>>>>>> main
     await alert.present();
   }
 
