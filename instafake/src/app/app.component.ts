@@ -7,11 +7,13 @@ import { FotosService, UserPhoto } from 'src/services/fotos.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  servicioFotos: FotosService = inject(FotosService)
+  servicioCamara: FotosService = inject(FotosService)
   constructor() {}
   tomarFoto(): void {
-   this.servicioFotos.tomarFoto().then((foto: UserPhoto) => {
-      console.log(foto)
+    this.servicioCamara.tomarFoto().then((foto: UserPhoto) => {
+      fetch(foto.webviewPath).then(r => {
+
+      })
     })
   }
 }

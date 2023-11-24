@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Camera, CameraResultType, CameraSource, Photo, CameraPhoto } from '@capacitor/camera';
-import { Filesystem, Directory } from '@capacitor/filesystem';
-import { Preferences } from '@capacitor/preferences';
 
 export interface UserPhoto {
-  filepath: string;
-  webviewPath?: string;
+  webviewPath: string;
 }
 
 @Injectable({
@@ -21,7 +18,6 @@ export class FotosService {
       quality: 100
     });
     return {
-      filepath: "soon...",
       webviewPath: capturedPhoto.webPath!
     }
   }
