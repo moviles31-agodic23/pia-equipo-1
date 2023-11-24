@@ -40,6 +40,7 @@ export class VisorComponent implements OnInit {
         this.listaImagenes.push(conjuntoImagenes);
         this.cantidadPublicaciones += conjuntoImagenes.length;
       });
+    this.servicioImagenes.obtenerUID()
   }
   agregarImagen(url: string): void {
     const cantidadFilas: number = this.listaImagenes.length;
