@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { getStorage, ref, uploadBytes } from '@angular/fire/storage';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import {v4 as uuidv4} from 'uuid';
 
 @Injectable({
   providedIn: 'root',
@@ -13,13 +14,6 @@ export class ImagenesService {
   constructor() {}
   obtenerSuscripcion(): Subject<string[]> {
     return this.imagenes;
-  }
-  obtenerUID(){
-    this.fireAuth.currentUser.then( data => {
-        return data?.uid
-    })
-  }
-  agregarImagenBase(url: string): void{
   }
   obtenerImagenesPrueba(): Observable<string[]> {
     return new Observable<string[]>((suscriptor) => {
