@@ -15,6 +15,21 @@ export class ImagenesService {
   obtenerSuscripcion(): Subject<string[]> {
     return this.imagenes;
   }
+  subirImagen(imagen: Blob): void{
+    this.fireAuth.currentUser.then(datos => {
+      let uidUsuario = datos?.uid
+      const almacenamiento = getStorage();
+      const localizacionImg = ref(
+        almacenamiento, `${uidUsuario}/${uuidv4()}.png`
+      );
+      const metadata = {
+        contentType: 'image/png',
+      };
+      uploadBytes(localizacionImg, imagen, metadata).then((snapshot) => {
+        console.log("Archivo en base")
+      })
+    })
+  }
   obtenerImagenesPrueba(): Observable<string[]> {
     return new Observable<string[]>((suscriptor) => {
       const cantidadImagenes: number = 4;

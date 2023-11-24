@@ -12,6 +12,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,6 +20,7 @@ import { environment } from 'src/environments/environment';
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     provideFirebaseApp(() =>
       initializeApp({
