@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     const user = await this.userService.register(this.credentials.value);
     await loading.dismiss();
     if (user){
-      this.router.navigateByUrl('/home', {replaceUrl: true});
+      this.router.navigateByUrl('/perfil', {replaceUrl: true});
     } else {
       this.showAlert('Fallo el Registro', 'Intente de nuevo');
     }
@@ -61,17 +61,22 @@ export class LoginComponent implements OnInit {
     const user = await this.userService.login(this.credentials.value);
     await loading.dismiss();
     if (user){
-      this.router.navigateByUrl('/home', {replaceUrl: true});
+      this.router.navigateByUrl('perfil', {replaceUrl: true});
     } else {
       this.showAlert('Fallo el Login', 'Intente de nuevo');
     }
   }
 
-  async showAlert(header: any, message: any){
+  async showAlert(header: string, message: string){
     const alert = await this.alertController.create({
       header,
       message,
       buttons: ['OK']
     })
+    await alert.present();
+  }
+
+  async logout(){
+      this.userService.logout()
   }
 }
