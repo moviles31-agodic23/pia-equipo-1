@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import { ImagenesService } from '../../services/imagenes.service'
 import {NgIf} from "@angular/common";
 
@@ -9,7 +9,7 @@ import {NgIf} from "@angular/common";
   templateUrl: './detalle-publicacion.component.html',
   styleUrls: ['./detalle-publicacion.component.scss'],
   standalone: true,
-  imports: [IonicModule, NgIf],
+  imports: [IonicModule, NgIf, RouterLink],
 })
 export class DetallePublicacionComponent implements OnInit {
   constructor(public serImg: ImagenesService, public route: ActivatedRoute) {}
