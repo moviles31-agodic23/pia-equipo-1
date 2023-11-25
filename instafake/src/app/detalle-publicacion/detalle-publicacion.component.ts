@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
+import { ImagenesService } from '../../services/imagenes.service'
 
 @Component({
   selector: 'app-detalle-publicacion',
@@ -10,14 +12,26 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule],
 })
 export class DetallePublicacionComponent implements OnInit {
-  constructor() {}
+  constructor(public serImg: ImagenesService, public route: ActivatedRoute) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.idPub)
+    console.log(this.getPublicationPicture(this.idPub))
+  }
 
+  idPub: number = this.route.snapshot.params['id']
+
+  username: String = "Doge"
   userLink: String = "https://www.infobae.com/new-resizer/JgpqrjpSJq8LHnspBvqjJ0S66UQ=/1440x1080/filters:format(webp):quality(85)/s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2018/07/05182149/dogecoin-1.jpg"
   pictureLink: String = "https://www.infobae.com/new-resizer/JgpqrjpSJq8LHnspBvqjJ0S66UQ=/1440x1080/filters:format(webp):quality(85)/s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2018/07/05182149/dogecoin-1.jpg"
-  likes: Number = 100
+  likes: number = 100
   description: String = "Juan perez"
-  comments: Number = 16
+  comments: number = 16
   time: any = 30
+
+  getPublicationPicture(id: number){
+    let pictureArray: any = this.serImg.obtenerPublicaciones()
+    console.log(pictureArray)
+    return pictureArray[id]
+  }
 }
