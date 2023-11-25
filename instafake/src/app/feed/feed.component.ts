@@ -3,13 +3,14 @@ import { IonicModule } from '@ionic/angular';
 import { DetallePublicacionComponent } from '../detalle-publicacion/detalle-publicacion.component'
 import {ImagenesService} from "../../services/imagenes.service";
 import {NgForOf} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss'],
   standalone: true,
-  imports: [IonicModule, DetallePublicacionComponent, NgForOf],
+  imports: [IonicModule, DetallePublicacionComponent, NgForOf, RouterLink],
 })
 export class FeedComponent implements OnInit {
   constructor(public serImg: ImagenesService) {}

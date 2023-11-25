@@ -40,7 +40,7 @@
         </ion-card-content>
       </ion-col>
     </ion-row>
-    <ion-row class="vertical-center">
+    <ion-row class="vertical-center" *ngIf="showComments">
       <ion-col size="2" style="padding-left: 21px">
         <ion-img [src]="userLink" class="img-circle" alt="Doge"/>
       </ion-col>
