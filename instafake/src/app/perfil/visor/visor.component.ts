@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { url } from 'inspector';
 import { finalize } from 'rxjs';
 import { ImagenesService } from 'src/services/imagenes.service';
 @Component({
@@ -14,20 +15,34 @@ export class VisorComponent implements OnInit {
   listaImagenes: string[][] = new Array();
   servicioImagenes: ImagenesService = inject(ImagenesService);
   cantidadPublicaciones: number = 0;
-  imagenesPorFila: number = 3;
+  readonly imagenesPorFila: number = 3;
   @Output() emisorCantidadPublicaciones: EventEmitter<number> =
     new EventEmitter<number>();
   constructor() {
-    let p: string[] = []
     this.servicioImagenes.obtenerPublicaciones()
       .then((publicaciones: string[]) => {
         this.cantidadPublicaciones += publicaciones.length
-        this.agregarImagenes(publicaciones)
+        publicaciones.forEach((url: string) => {
+          this.agregarImagen(url)
+        })
         this.emisorCantidadPublicaciones.emit(this.cantidadPublicaciones)
       })
   }
   ngOnInit(): void {
   }
-  agregarImagenes(urlImagenes: string[]): void {
+  agregarImagen(urlImagen: string): void {
+    const cantidadFilas: number = this.listaImagenes.length
+    if(cantidadFilas == 0){
+      this.listaImagenes = [[urlImagen]]
+      return
+    }
+    const indiceUltimaFila: number = cantidadFilas - 1
+    const ultimaFila: string[] = this.listaImagenes[indiceUltimaFila]
+    if (ultimaFila.length == this.imagenesPorFila){
+      this.listaImagenes.push([urlImagen])
+      return
+    } else {
+      this.listaImagenes[indiceUltimaFila].push(urlImagen)
+    }
   }
 }
