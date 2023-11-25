@@ -13,7 +13,7 @@ import { CommonModule, } from '@angular/common';
 })
 export class PerfilComponent implements OnInit {
   cantidadPublicaciones: string = '';
-  publicacionesDisponibles: boolean = true;
+  publicacionesDisponibles: boolean = false;
   constructor() {}
   ngOnInit() {}
   mostrarCantidadPublicaciones(cantidad: number): void {

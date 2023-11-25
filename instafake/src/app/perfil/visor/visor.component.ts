@@ -18,13 +18,16 @@ export class VisorComponent implements OnInit {
   @Output() emisorCantidadPublicaciones: EventEmitter<number> =
     new EventEmitter<number>();
   constructor() {
-    this.servicioImagenes.obtenerPublicaciones().subscribe((valor: string) => {
-      console.log(valor)
-    })
+    let p: string[] = []
+    this.servicioImagenes.obtenerPublicaciones()
+      .then((publicaciones: string[]) => {
+        this.cantidadPublicaciones += publicaciones.length
+        this.agregarImagenes(publicaciones)
+        this.emisorCantidadPublicaciones.emit(this.cantidadPublicaciones)
+      })
   }
   ngOnInit(): void {
   }
-  agregarImagenes(imagenes: string[]): void {
-    console.log(imagenes.length)
+  agregarImagenes(urlImagenes: string[]): void {
   }
 }

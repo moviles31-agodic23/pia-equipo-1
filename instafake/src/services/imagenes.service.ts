@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { getDownloadURL, getStorage, ref, uploadBytes, listAll } from '@angular/fire/storage';
+import { getDownloadURL, getStorage, ref, uploadBytes, listAll, ListResult } from '@angular/fire/storage';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {v4 as uuidv4} from 'uuid';
 
@@ -30,22 +30,23 @@ export class ImagenesService {
       })
     })
   }
-  obtenerPublicaciones(): Observable<string> {
-    return new Observable<string>((suscriptor) => {
-      this.fireAuth.currentUser.then(datos => {
-        let uidUsuario: string | undefined = datos?.uid
-        let bucketActual = getStorage()
-        let folderPublicaciones = ref(bucketActual, `${uidUsuario}/`)
-        listAll(folderPublicaciones).then(archivo => {
-            archivo.items.forEach((item) => {
-            const ubicacionPublicacion = item.fullPath
-            getDownloadURL(ref(bucketActual, ubicacionPublicacion)).then(direccion => {
-              suscriptor.next(direccion)
-            })
-          })
-        })
-      })
-    })
+  async obtenerPublicaciones(): Promise<string[]> {
+    let uid: string | undefined = await this.fireAuth.currentUser.then(datos => datos?.uid)
+    if (!uid) return [""]
+    let bucketActual = getStorage()
+    let folderPublicaciones = ref(bucketActual, `${uid}/`)
+    let imagenesOriginales: ListResult = await listAll(folderPublicaciones)
+    const cantidadImagenes: number = imagenesOriginales.items.length
+    let urls: string[] = await Promise.all(
+      imagenesOriginales.items.map(
+        async (item) => {
+          const ubicacionPublicacion = item.fullPath;
+          const direccion = await getDownloadURL(ref(bucketActual, ubicacionPublicacion));
+          return direccion;
+        }
+      )
+    )
+    return urls
   }
   obtenerImagenesPrueba(): Observable<string[]> {
     return new Observable<string[]>((suscriptor) => {
