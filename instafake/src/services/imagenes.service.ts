@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { getStorage, ref, uploadBytes } from '@angular/fire/storage';
+import { getDownloadURL, getStorage, ref, uploadBytes, listAll } from '@angular/fire/storage';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {v4 as uuidv4} from 'uuid';
 
@@ -29,6 +29,23 @@ export class ImagenesService {
         console.log("Archivo en base")
       })
     })
+  }
+  obtenerPublicaciones(): string [] {
+    let publicaciones: string[] = []
+    this.fireAuth.currentUser.then(datos => {
+      let uidUsuario: string | undefined = datos?.uid
+      let bucketActual = getStorage()
+      let folderPublicaciones = ref(bucketActual, `${uidUsuario}/`)
+      listAll(folderPublicaciones).then(archivo => {
+        archivo.items.forEach((item) => {
+          const ubicacionPublicacion = item.fullPath
+          getDownloadURL(ref(bucketActual, ubicacionPublicacion)).then(direccion => {
+            publicaciones.push(direccion)
+          })
+        })
+      })
+    })
+    return publicaciones
   }
   obtenerImagenesPrueba(): Observable<string[]> {
     return new Observable<string[]>((suscriptor) => {
