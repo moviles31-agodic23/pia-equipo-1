@@ -14,5 +14,10 @@ export class DetallePublicacionComponent implements OnInit {
 
   ngOnInit() {}
 
+  userLink: String = "https://www.infobae.com/new-resizer/JgpqrjpSJq8LHnspBvqjJ0S66UQ=/1440x1080/filters:format(webp):quality(85)/s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2018/07/05182149/dogecoin-1.jpg"
   pictureLink: String = "https://www.infobae.com/new-resizer/JgpqrjpSJq8LHnspBvqjJ0S66UQ=/1440x1080/filters:format(webp):quality(85)/s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2018/07/05182149/dogecoin-1.jpg"
+  likes: Number = 100
+  description: String = "Juan perez"
+  comments: Number = 16
+  time: any = 30
 }
