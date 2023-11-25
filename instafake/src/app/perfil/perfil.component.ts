@@ -21,6 +21,7 @@ export class PerfilComponent implements OnInit {
       this.publicacionesDisponibles = false;
       return;
     }
-    this.cantidadPublicaciones = cantidad >= 100 ? '+100' : cantidad.toString();
+    this.cantidadPublicaciones = cantidad >= 100 ? '+99' : cantidad.toString();
+    this.publicacionesDisponibles = true
   }
 }

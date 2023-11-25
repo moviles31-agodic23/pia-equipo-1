@@ -30,22 +30,22 @@ export class ImagenesService {
       })
     })
   }
-  obtenerPublicaciones(): string [] {
-    let publicaciones: string[] = []
-    this.fireAuth.currentUser.then(datos => {
-      let uidUsuario: string | undefined = datos?.uid
-      let bucketActual = getStorage()
-      let folderPublicaciones = ref(bucketActual, `${uidUsuario}/`)
-      listAll(folderPublicaciones).then(archivo => {
-        archivo.items.forEach((item) => {
-          const ubicacionPublicacion = item.fullPath
-          getDownloadURL(ref(bucketActual, ubicacionPublicacion)).then(direccion => {
-            publicaciones.push(direccion)
+  obtenerPublicaciones(): Observable<string> {
+    return new Observable<string>((suscriptor) => {
+      this.fireAuth.currentUser.then(datos => {
+        let uidUsuario: string | undefined = datos?.uid
+        let bucketActual = getStorage()
+        let folderPublicaciones = ref(bucketActual, `${uidUsuario}/`)
+        listAll(folderPublicaciones).then(archivo => {
+            archivo.items.forEach((item) => {
+            const ubicacionPublicacion = item.fullPath
+            getDownloadURL(ref(bucketActual, ubicacionPublicacion)).then(direccion => {
+              suscriptor.next(direccion)
+            })
           })
         })
       })
     })
-    return publicaciones
   }
   obtenerImagenesPrueba(): Observable<string[]> {
     return new Observable<string[]>((suscriptor) => {

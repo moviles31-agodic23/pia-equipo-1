@@ -17,39 +17,14 @@ export class VisorComponent implements OnInit {
   imagenesPorFila: number = 3;
   @Output() emisorCantidadPublicaciones: EventEmitter<number> =
     new EventEmitter<number>();
-  constructor() {}
-  ngOnInit(): void {
-    this.servicioImagenes
-      .obtenerImagenesPrueba()
-      .pipe(
-        finalize(() => {
-          this.cantidadPublicaciones += 3;
-          this.emisorCantidadPublicaciones.emit(this.cantidadPublicaciones);
-          this.agregarImagen(
-            '../../../assets/visor/imagenes_prueba/IMG_20200605_075456-1.jpg'
-          );
-          this.agregarImagen(
-            '../../../assets/visor/imagenes_prueba/IMG_20200613_073256.jpg'
-          );
-          this.agregarImagen(
-            '../../../assets/visor/imagenes_prueba/20220513_123432.jpg'
-          );
-        })
-      )
-      .subscribe((conjuntoImagenes: string[]) => {
-        this.listaImagenes.push(conjuntoImagenes);
-        this.cantidadPublicaciones += conjuntoImagenes.length;
-      });
+  constructor() {
+    this.servicioImagenes.obtenerPublicaciones().subscribe((valor: string) => {
+      console.log(valor)
+    })
   }
-  agregarImagen(url: string): void {
-    const cantidadFilas: number = this.listaImagenes.length;
-    const cantidadImagenesUltimaFila: number =
-      this.listaImagenes[cantidadFilas - 1].length;
-    if (cantidadImagenesUltimaFila === this.imagenesPorFila) {
-      const nuevaFila: string[] = [url];
-      this.listaImagenes.push(nuevaFila);
-    } else {
-      this.listaImagenes[cantidadFilas - 1].push(url);
-    }
+  ngOnInit(): void {
+  }
+  agregarImagenes(imagenes: string[]): void {
+    console.log(imagenes.length)
   }
 }
