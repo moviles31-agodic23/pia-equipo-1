@@ -12,12 +12,14 @@ export class AppComponent {
   servicioSubirImages: ImagenesService = inject(ImagenesService)
   constructor() {}
   tomarFoto(): void {
-    this.servicioCamara.tomarFoto().then((foto: UserPhoto) => {
-      fetch(foto.webviewPath).then(archivo => {
-        archivo.blob().then((blob: Blob) => {
-          this.servicioSubirImages.subirImagen(blob)
+    this.servicioCamara.tomarFoto()
+      .then((foto: UserPhoto) => {
+        fetch(foto.webviewPath).then(archivo => {
+          archivo.blob()
+            .then((blob: Blob) => {
+              this.servicioSubirImages.subirImagen(blob)
+            })
         })
       })
-    })
   }
 }
