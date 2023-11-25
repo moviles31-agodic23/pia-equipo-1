@@ -15,6 +15,7 @@ export class VisorComponent implements OnInit {
   listaImagenes: string[][] = new Array();
   servicioImagenes: ImagenesService = inject(ImagenesService);
   cantidadPublicaciones: number = 0;
+  mostrarImagenes: boolean = false
   readonly imagenesPorFila: number = 3;
   @Output() emisorCantidadPublicaciones: EventEmitter<number> =
     new EventEmitter<number>();
@@ -44,5 +45,6 @@ export class VisorComponent implements OnInit {
     } else {
       this.listaImagenes[indiceUltimaFila].push(urlImagen)
     }
+    this.mostrarImagenes = true
   }
 }
