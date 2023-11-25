@@ -4,11 +4,12 @@ import { IonicModule } from '@ionic/angular';
 import { url } from 'inspector';
 import { finalize } from 'rxjs';
 import { ImagenesService } from 'src/services/imagenes.service';
+import {RouterLink} from "@angular/router";
 @Component({
   selector: 'perfil-visor',
   templateUrl: './visor.component.html',
   styleUrls: ['./visor.component.scss'],
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule, RouterLink],
   standalone: true,
 })
 export class VisorComponent implements OnInit {
