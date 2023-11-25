@@ -3,6 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 
 import { ImagenesService } from '../../services/imagenes.service'
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-detalle-publicacion',
@@ -15,8 +16,7 @@ export class DetallePublicacionComponent implements OnInit {
   constructor(public serImg: ImagenesService, public route: ActivatedRoute) {}
 
   ngOnInit() {
-    console.log(this.idPub)
-    console.log(this.getPublicationPicture(this.idPub))
+    this.updatePublication(this.idPub)
   }
 
   idPub: number = this.route.snapshot.params['id']
@@ -29,9 +29,8 @@ export class DetallePublicacionComponent implements OnInit {
   comments: number = 16
   time: any = 30
 
-  getPublicationPicture(id: number){
-    let pictureArray: any = this.serImg.obtenerPublicaciones()
-    console.log(pictureArray)
-    return pictureArray[id]
+  async updatePublication(id: number){
+    let pictureArray: String[] = await this.serImg.obtenerPublicaciones()
+    this.pictureLink = pictureArray[id]
   }
 }
